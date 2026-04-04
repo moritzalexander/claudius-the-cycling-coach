@@ -1,0 +1,23 @@
+# API keys and secrets
+.mcp.json
+.claude/settings.local.json
+.env
+intervals-icu-mcp/.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+intervals-icu-mcp/.venv/
+
+# Nested git repo (intervals-icu-mcp is a separate project)
+intervals-icu-mcp/.git/
+
+# Personal athlete data
+memory/user_athlete_profile.md
+
+# OS
+.DS_Store
+
+# Temp files
+/tmp/

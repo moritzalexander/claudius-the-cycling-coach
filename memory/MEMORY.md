@@ -1,0 +1,5 @@
+- [Athlete Profile](user_athlete_profile.md) — Cycling + strength, events/hours TBD, pull from Intervals.icu
+- [Architecture Decisions](project_architecture.md) — MCP server choice, reuse strategy, design principles
+- [Project History & Research](project_history.md) — Full build history, research on 5 MCP servers, 5+ coaching projects, commercial platforms, training science, workout classification. Read this to continue where we left off.
+- [Working Style](feedback_working_style.md) — Discuss before building, review each piece individually, don't rush ahead
+- [Review Skill Lessons](feedback_review_style.md) — Chart-first classification, no metric bias, count power blocks not W'bal dips, deduce don't ask, pattern recognition
