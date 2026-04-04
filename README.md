@@ -1,12 +1,12 @@
 # Claudius the Cycling Coach
 
-A set of [Claude Code](https://claude.ai/claude-code) skills that turn Claude into a cycling coach, powered by [Intervals.icu](https://intervals.icu) training data.
+A set of [Claude Code](https://claude.ai/claude-code) skills that turn Claude into a cycling coach and training logger, powered by [Intervals.icu](https://intervals.icu) training data.
 
-Claudius reads your workout data, generates charts, classifies your sessions, and gives coaching feedback — all from the command line.
+Claudius reads your workout data, generates charts, classifies your sessions, gives coaching feedback, and logs your weight training — all from the command line.
 
 ## What It Does
 
-Five slash commands, each a different coaching interaction:
+Six slash commands, each a different coaching interaction:
 
 | Command | What it does |
 |---------|-------------|
@@ -15,6 +15,7 @@ Five slash commands, each a different coaching interaction:
 | `/status` | Quick check: current fitness (CTL/ATL/TSB), recovery readiness, and what to do today |
 | `/plan` | Prescribe the next 3-5 days of workouts based on current fitness and fatigue |
 | `/science` | Look up training science topics with evidence-based explanations |
+| `/log-weights` | Describe your gym sessions conversationally and save them as completed activities in Intervals.icu |
 
 ### Workout Review Example
 
@@ -32,6 +33,37 @@ spaced ~8min apart. Classic interval pattern.
 The `/review` skill generates a 6-panel workout chart showing power, zone distribution, heart rate, cadence, elevation, and W' balance:
 
 ![Workout Chart](docs/chart-example.png)
+
+### Weight Training Logging Example
+
+```
+> /log-weights Monday I did squats 3x10 at 60lb each side, leg press
+  180lb each side. Wednesday was upper body — pull-ups 12, 8, 7 reps,
+  lat pulldown 3x10 at 170lb, seated row 3x10 at 190lb.
+
+### Mon Mar 30 — Heavy Leg Day
+
+| Exercise          | Sets × Reps | Weight              | Notes         |
+|-------------------|-------------|---------------------|---------------|
+| Barbell Squats    | 3×10        | 60 lb/side (~165 lb)| Executed well |
+| Leg Press         | 3×10        | ~180 lb/side        |               |
+
+### Wed Apr 1 — Upper Body
+
+| Exercise          | Sets × Reps | Weight    | Notes      |
+|-------------------|-------------|-----------|------------|
+| Pull-ups          | 12, 8, 7    | Bodyweight|            |
+| Lat Pulldown      | 3×10        | 170 lb    |            |
+| Seated Cable Row  | 3×10        | 190 lb    |            |
+
+Does this look right? I'll save these to Intervals.icu.
+
+> yes
+
+Saved 2 weight training activities to Intervals.icu:
+- Mon Mar 30: Heavy Leg Day (id: i137051310)
+- Wed Apr 1: Upper Body (id: i137051324)
+```
 
 ## How It Works
 
@@ -107,12 +139,24 @@ claude
 │       ├── weekly-review.md     # Training block review
 │       ├── status.md            # Daily fitness check
 │       ├── plan.md              # Workout prescription
-│       └── science.md           # Training science lookup
+│       ├── science.md           # Training science lookup
+│       └── log-weights.md       # Weight training logger
 ├── scripts/
 │   └── chart.py                 # 6-panel workout chart generator
 ├── memory/                      # Project context and learnings
 └── .mcp.json.example            # MCP server config template
 ```
+
+## The Weight Training Logger
+
+The `/log-weights` skill lets you describe gym sessions in plain language. It:
+
+1. Parses your conversational description into structured exercises (names, sets, reps, weights)
+2. Shows you a table to confirm before saving
+3. Creates manual activities in Intervals.icu via the API — these show as completed workouts on your calendar, just like device-recorded rides
+4. Flags any injuries or pain prominently
+
+It handles natural language like "the thing where I pull down a bar" (lat pulldown), calculates total barbell weight from per-side descriptions ("60 lb each side" → ~165 lb total), and marks unknown weights as "not recorded" rather than guessing.
 
 ## The Workout Review Skill
 
