@@ -48,7 +48,7 @@ curl -s -X POST -u "API_KEY:${INTERVALS_ICU_API_KEY}" \
   -d '{
     "start_date_local": "<YYYY-MM-DD>T07:00:00",
     "name": "<Session Type>",
-    "category": "WORKOUT",
+    "category": "NOTE",
     "type": "WeightTraining",
     "moving_time": <estimated_duration_seconds>,
     "description": "<formatted exercise list>"
