@@ -39,23 +39,26 @@ Wait for confirmation before saving. The athlete may want to correct weights, re
 
 ### Step 3: Save to Intervals.icu
 
-For each session, create an event using a direct API call (the MCP `create_event` tool has a date format bug — use curl instead):
+For each session, create a **manual activity** (not an event) using the Intervals.icu API:
 
 ```bash
 curl -s -X POST -u "API_KEY:${INTERVALS_ICU_API_KEY}" \
-  "https://intervals.icu/api/v1/athlete/${INTERVALS_ICU_ATHLETE_ID}/events" \
+  "https://intervals.icu/api/v1/athlete/${INTERVALS_ICU_ATHLETE_ID}/activities/manual" \
   -H "Content-Type: application/json" \
   -d '{
     "start_date_local": "<YYYY-MM-DD>T07:00:00",
-    "name": "<Session Type>",
-    "category": "NOTE",
     "type": "WeightTraining",
+    "name": "<Session Type>",
     "moving_time": <estimated_duration_seconds>,
-    "description": "<formatted exercise list>"
+    "elapsed_time": <estimated_duration_seconds>,
+    "description": "<formatted exercise list>",
+    "perceived_exertion": <RPE 1-10 if mentioned>
   }'
 ```
 
 Get the API key and athlete ID from the `.mcp.json` file at the project root.
+
+**Important:** Use `activities/manual` (not `events`). Activities show as completed workouts on the calendar. Events are for *planned* workouts. If the athlete wants to plan a strength session and complete it later, create an event first, then a manual activity with `paired_event_id` linking to the event.
 
 **Description format:**
 ```
@@ -70,6 +73,7 @@ Exercise Name: Sets×Reps @ Weight
 - 3-4 exercises: ~45 min (2700s)
 - 5-6 exercises: ~60 min (3600s)
 - 7+ exercises: ~75 min (4500s)
+- Default: 75 min (4500s)
 
 ### Step 4: Confirm Saved
 
