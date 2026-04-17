@@ -1,4 +1,4 @@
-- [Athlete Profile](user_athlete_profile.md) — Cycling + strength, events/hours TBD, pull from Intervals.icu
+- [Athlete Profile](user_athlete_profile.md) — Full plan: 83kg, FTP ~330W, Cat 3, weekly structure, strength progression, heat acclimation, nutrition, periodization. Updated Apr 6 2026.
 - [Architecture Decisions](project_architecture.md) — MCP server choice, reuse strategy, design principles
 - [Project History & Research](project_history.md) — Full build history, research on 5 MCP servers, 5+ coaching projects, commercial platforms, training science, workout classification. Read this to continue where we left off.
 - [Working Style](feedback_working_style.md) — Discuss before building, review each piece individually, don't rush ahead
