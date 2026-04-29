@@ -1,4 +1,5 @@
-- [Athlete Profile](user_athlete_profile.md) — Full plan: 83kg, FTP ~330W, Cat 3, weekly structure, strength progression, heat acclimation, nutrition, periodization. Updated Apr 6 2026.
+- [Athlete Profile](user_athlete_profile.md) — Full plan: 83kg, FTP ~330W (likely 335–345W), Cat 3, weekly structure, strength plan, heat acclimation, nutrition, periodization, pre-race opener prefs. Updated Apr 28 2026.
+- [Gym Log](gym_log.json) — **READ BEFORE PLANNING ANY STRENGTH SESSION.** Actual weights per exercise with progression status and injury flags. 'current' section = quick lookup. 'sessions' = full history from Apr 6 onward.
 - [Architecture Decisions](project_architecture.md) — MCP server choice, reuse strategy, design principles
 - [Project History & Research](project_history.md) — Full build history, research on 5 MCP servers, 5+ coaching projects, commercial platforms, training science, workout classification. Read this to continue where we left off.
 - [Working Style](feedback_working_style.md) — Discuss before building, review each piece individually, don't rush ahead

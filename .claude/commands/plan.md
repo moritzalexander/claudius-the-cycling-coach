@@ -119,11 +119,26 @@ If prescribing a training approach that might benefit from validation:
 
 ### Step 6: Consider Strength Training
 
-The athlete does lower body strength 2x/week and upper body on other days. When scheduling:
+The athlete does lower body strength 2x/week (Mon heavy, Thu explosive) and upper body on other days. When scheduling:
 - Never prescribe hard cycling intervals on lower-body strength days (legs are pre-fatigued)
 - Easy Z2 rides are fine on strength days (before or after, with adequate fueling)
 - Schedule the hardest cycling days on non-strength days
 - Upper body days have no impact on cycling performance — these are free days for hard rides
+
+**Before prescribing any strength session, read `memory/gym_log.json`:**
+- `current` section = exact weights and progression targets for each exercise
+- `sessions` section = recent history showing what was done
+- Check `status` fields: `"HOLD"` or `"REINTRODUCTION"` means the exercise is injured/restricted
+- Respect `next_target_*` fields — these are the prescribed weights for the next session, not arbitrary progressions
+- Flag any exercise marked `"pending"` that has been skipped 2+ sessions in a row
+
+**Current injury awareness (check gym_log for latest):**
+- Deadlifts: recurring lower back flare (Apr 2 + Apr 20). Now in REINTRODUCTION phase. Do not prescribe working sets until 2+ consecutive pain-free warmup sessions confirmed.
+- Back extensions (45°): continue as rehab movement.
+
+**Pre-race openers (race-day eve rule):**
+- **No sprints (5–15s maximal efforts) the day before any race.** Athlete's sprint power is a known weakness — sprint-primers deplete it rather than prime it.
+- Preferred opener: 35–40 min total. Easy Z2 build (15 min, max 180W) + 3 × 30s @ 110–120% FTP (360–390W) with 2 min easy recovery + 10 min flush. Primes aerobic/VO2 system without touching neuromuscular ceiling.
 
 ### Step 7: Produce the Plan
 

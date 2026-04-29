@@ -75,13 +75,48 @@ Exercise Name: Sets×Reps @ Weight
 - 7+ exercises: ~75 min (4500s)
 - Default: 75 min (4500s)
 
-### Step 4: Confirm Saved
+### Step 4: Update gym_log.json
+
+After saving to Intervals.icu, update `memory/gym_log.json`:
+
+1. **Add a new entry to `sessions[]`** with the full session details:
+   ```json
+   {
+     "date": "YYYY-MM-DD",
+     "session_type": "heavy_monday | explosive_thursday | upper_body | ...",
+     "gym": "main | building | outdoor | ...",
+     "context": "One sentence — race load, fatigue, injury context",
+     "exercises": [
+       {"name": "barbell_squat", "sets": 4, "reps": 5, "weight_total_lbs": 190, "weight_per_side_lbs": 72.5, "status": "completed", "notes": "..."},
+       ...
+     ]
+   }
+   ```
+
+2. **Update `current[exercise]`** for each exercise that was done:
+   - Update `last_date`
+   - If completed successfully: update `next_target_*` (add 5 lbs for squats/press, 2.5 lbs for accessory)
+   - If partial or struggled: update `status` to `"partial"`, keep `next_target_*` the same
+   - If skipped: update `notes` with skip reason, keep values unchanged
+   - If on HOLD: update `notes` with latest status
+
+3. **Update `meta.last_updated`** to today's date.
+
+**Weight conventions in gym_log.json:**
+- Barbell exercises: `weight_total_lbs` includes 45 lb bar. `weight_per_side_lbs` = plates per side only.
+- Leg press: `weight_total_lbs` includes ~45 lb sled. `weight_per_side_lbs` = plates per side only.
+- Dumbbell exercises: `weight_per_hand_lbs` = single dumbbell weight. No total field.
+- Machine exercises: `weight_per_side_lbs` = stack per side.
+
+### Step 5: Confirm Saved
 
 After saving, report:
 ```
 Saved [N] weight training sessions to Intervals.icu:
 - [Date]: [Session Name] (id: [event_id])
 - ...
+
+gym_log.json updated.
 ```
 
 ## Key Principles
