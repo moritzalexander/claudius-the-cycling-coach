@@ -160,10 +160,80 @@ Discussion point: the science section is currently a shallow cheat sheet. Option
 - File-based input (JSON with stream arrays + parameters)
 - Tested with synthetic 5×5min interval data — renders correctly at 20×14 inches, 130 DPI
 
-## Current State & Next Steps
+## Current State (as of April 28, 2026)
 
-- MCP server is configured in `.mcp.json` but needs a **session restart** to load
-- The `/review` skill is the primary focus — needs end-to-end testing with real ride data
-- The CLAUDE.md training science depth question is still open (shallow cheat sheet vs deeper frameworks)
-- The other skills (`/weekly-review`, `/status`, `/plan`, `/science`) were built but not reviewed with the user in detail — they should be discussed before considering them final
-- User feedback: prefers reuse over building from scratch, wants explicit workout classification, wants interactive coach dialogue, values W'bal analysis highly
+### Review Skill — Finalized Architecture
+
+The `/review` skill went through several refinement cycles. Key lessons learned (all documented in `feedback_review_style.md`):
+- Chart-first classification (don't load IF/VI/TSS before seeing the chart — numbers bias classification)
+- Count power blocks, not W'bal dips (outdoor variability creates false minima)
+- W'bal depletion count is the PRIMARY signal, chart is confirmation
+- Pattern vocabulary: comb = microintervals, rectangular blocks = structured intervals, chaotic = race/group
+
+**Chart approach evolved:** Originally built `scripts/chart.py` (matplotlib, 6-panel). Then shifted to a **React artifact** approach embedded directly in Claude responses — renders interactive 6-panel chart (raw power, zone-colored 30s power, HR with zone bands, cadence, elevation, W'bal). The React chart uses `syncId="workout"` for cross-panel hover.
+
+**W'bal computation:** Moved from inline Python in review.md to a dedicated Node.js script at `intervals-icu-coaching/scripts/wbal.js` in the plugin. Input: `{streams, ftp, wprime}`. Output keys: `wbal`, `wbalKj`, `depletionCycles` (with `number`, `timeMin`, `wbalKj`, `wbalPct`, `avgPowerIn`, `altitudeM`), `count`.
+
+### Pre-Race Opener Protocol (April 24, 2026)
+
+**Problem discovered:** Prescribed sprints as race-day openers → athlete pushed back. Sprint efforts deplete his limited sprint power rather than priming it.
+
+**Solution established:**
+- No max sprints (5–15s) the day before any race — permanently saved to athlete profile
+- Preferred opener: 35–40 min. Easy Z2 build (max 180W = 55% FTP) + 3 × 30s @ 110–120% FTP + 2 min recovery + 10 min flush
+- Profile: threshold/diesel rider. Sprint power is a weakness. Preserve it entirely going into race days.
+
+**ZWO format discovery:** For on-screen Zwift text encouragement, must use `<textevent timeoffset="N" message="..." duration="N"/>` inside workout blocks. Native Intervals.icu description field doesn't support annotations. ZWO uploaded as `file_contents_base64` in event payload.
+
+**MCP `create_event` date bug:** Tool schema says `YYYY-MM-DD` but API returns HTTP 422 unless datetime includes time component. Workaround: bypass MCP, use Python urllib directly with `start_date_local: "YYYY-MM-DDTHH:MM:SS"`. Athlete ID in `.mcp.json` (not in env).
+
+**Cooldown ZWO quirk:** Intervals.icu treats `<Cooldown>` same as `<Warmup>` — `PowerLow=start, PowerHigh=end`. For a downward ramp: `PowerLow="0.55" PowerHigh="0.40"`.
+
+### Diamant Mountain Stage Race Weekend (April 25–26, 2026)
+
+Both Saturday circuit race and Sunday road race analyzed.
+
+**FTP signal:** Saturday circuit race IF=107% (NP≈348W for 69min); 20min best power = 339W. Suggests FTP is likely 335–345W, not the currently recorded 325W. Recommend FTP test in 2–3 weeks when fresh.
+
+**Race load:** ~515 TSS total across the weekend, 6 complete W'bal depletions. Brutal two-day block.
+
+**Saturday device issue:** Garmin left running after race end — small spurious file (i143223871: 9 min, elapsed 7769s) created alongside the race file. Not critical but worth monitoring.
+
+### Gym Log System (April 2026)
+
+**Created `memory/gym_log.json`** — personal strength training tracking DB. Structure:
+- `meta` — conventions, last updated date
+- `current` — quick-lookup object per exercise with `last_date`, `sets/reps/weight`, `status`, `next_target_*`, `notes`
+- `sessions` — full chronological array of all sessions from Apr 6 onward
+
+**Weight conventions** (embedded in gym_log.json meta):
+- Barbell: total includes 45 lb bar; per_side = plates only
+- Leg press: total includes ~45 lb sled; per_side = plates only
+- Dumbbell: per_hand = single dumbbell
+- Machine: per_side = stack per side
+
+**Status values:** `"completed"`, `"partial"`, `"skipped"`, `"not_logged"`, `"HOLD"`, `"REINTRODUCTION"`, `"pending"`
+
+**Deadlift injury history:**
+- Apr 2: first flare (origin unknown)
+- Apr 9: resolved, explosive session resumed
+- Apr 20: second flare on deadlift attempt — placed on HOLD
+- Apr 27: first reintroduction — 2×10 warmup ramps (45/side, 70/side), no pain. No working sets. Status changed to REINTRODUCTION.
+
+**Squat progression:** 175 lbs Apr 6 → 180 Apr 13 → 185 Apr 20 → 185 Apr 27 (hold, post-race). Target 190 lbs next Monday May 4.
+
+**Leg press pattern:** Consistent regression after hard race weekends — drops to 180/side every time (~515 TSS). Recovery-week baseline is ~195/side.
+
+**Bulgarian split squats:** Skipped 3 consecutive heavy sessions. Pushed to Thu explosive session.
+
+### Updated Skill Files
+
+- **`plan.md`** — Added gym_log.json awareness (read before prescribing strength), pre-race opener rule (no sprints), injury check (deadlift HOLD/REINTRODUCTION status)
+- **`log-weights.md`** — Added Step 4: update gym_log.json after logging to Intervals.icu; weight conventions documented
+
+### Current Next Steps
+
+- FTP test in 2–3 weeks (target May 12–19) — race data strongly suggests 335–345W
+- Deadlift: 1 light working set (3×5 @ 95–115 lbs) if back pain-free through this week's explosive session
+- Bulgarian split squats: must appear in Thu Apr 30 explosive session — not optional
+- Consider adding `memory/gym_log.json` to `.gitignore` (personal data, same category as `user_athlete_profile.md`)

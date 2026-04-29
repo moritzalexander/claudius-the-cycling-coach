@@ -1,0 +1,320 @@
+{
+  "meta": {
+    "last_updated": "2026-04-28",
+    "athlete": "Moritz Moeller",
+    "description": "Gym exercise tracking database. 'current' = latest confirmed values per exercise, use for planning. 'sessions' = full chronological log.",
+    "weight_conventions": {
+      "barbell_exercises": "weight_total_lbs includes bar (45 lbs). weight_per_side_lbs = plates per side only.",
+      "leg_press": "weight_total_lbs includes sled (~45 lbs). weight_per_side_lbs = plates per side only.",
+      "dumbbell_exercises": "weight_per_hand_lbs = single dumbbell. No 'total' field — avoids ambiguity.",
+      "machine_hip_thrust": "weight_per_side_lbs = machine stack per side."
+    }
+  },
+
+  "current": {
+
+    "barbell_squat": {
+      "last_date": "2026-04-27",
+      "session": "heavy_monday",
+      "sets": 4, "reps": 5,
+      "weight_total_lbs": 185,
+      "weight_per_side_lbs": 70.0,
+      "status": "completed",
+      "next_target_total_lbs": 190,
+      "next_target_per_side_lbs": 72.5,
+      "notes": "Two consecutive sessions at 185 with improving depth. Ready to progress to 190 lbs next Monday."
+    },
+
+    "explosive_squat": {
+      "last_date": "2026-04-09",
+      "session": "explosive_thursday",
+      "sets": 3, "reps": 5,
+      "weight_total_lbs": 150,
+      "weight_per_side_lbs": 52.5,
+      "status": "completed",
+      "next_target_total_lbs": 155,
+      "next_target_per_side_lbs": 55.0,
+      "notes": "Fast concentric. +5 lbs next Thu."
+    },
+
+    "barbell_deadlift": {
+      "last_date": "2026-04-27",
+      "session": "heavy_monday",
+      "sets": null, "reps": null,
+      "weight_total_lbs": null,
+      "weight_per_side_lbs": null,
+      "status": "REINTRODUCTION",
+      "next_target_total_lbs": null,
+      "next_target_per_side_lbs": null,
+      "notes": "Apr 27: 2×10 warmup ramps (45/side, 70/side) as movement reintroduction — no working sets. Back responded OK. Next step: 1 light working set (e.g. 3×5 @ 95-115 lbs) if back feels good; add load gradually. No hard pulls until pain-free for 2+ consecutive sessions."
+    },
+
+    "incline_leg_press": {
+      "last_date": "2026-04-27",
+      "session": "heavy_monday",
+      "sets": 3, "reps": 5,
+      "weight_total_lbs": 405,
+      "weight_per_side_lbs": 180.0,
+      "status": "partial",
+      "next_target_total_lbs": 405,
+      "next_target_per_side_lbs": 180.0,
+      "notes": "Apr 27: 3×5 @ 180/side — felt very hard (post ~515 TSS race weekend). Same weight as Apr 20 drop. Pattern: race fatigue floors this lift. Next: 4×5 @ 180/side cleanly before climbing back to 195."
+    },
+
+    "bulgarian_split_squat": {
+      "last_date": "2026-04-20",
+      "session": "heavy_monday",
+      "sets": 3, "reps": 10,
+      "weight_per_hand_lbs": 40.0,
+      "status": "pending",
+      "next_target_per_hand_lbs": 40.0,
+      "notes": "Apr 20 was progressive: 30 → 35 → 45/hand. Skipped again Apr 27 (post-race fatigue). 3 consecutive sessions dropped. Move to Thursday explosive session as priority — do not let slide again."
+    },
+
+    "bulgarian_split_squat_explosive": {
+      "last_date": "2026-04-09",
+      "session": "explosive_thursday",
+      "sets": 3, "reps": 10,
+      "weight_per_hand_lbs": 35.0,
+      "status": "completed",
+      "next_target_per_hand_lbs": 35.0,
+      "notes": "Exceeded Apr 9 plan (was 30/hand). Hold at 35/hand, prioritise explosiveness over load."
+    },
+
+    "barbell_hip_thrust": {
+      "last_date": "2026-04-27",
+      "session": "heavy_monday",
+      "sets": 3, "reps": 10,
+      "weight_total_lbs": 315,
+      "weight_per_side_lbs": 135.0,
+      "status": "completed",
+      "next_target_total_lbs": 325,
+      "next_target_per_side_lbs": 140.0,
+      "notes": "Two consecutive sessions at 135/side. Ready to progress to 140/side next Monday."
+    },
+
+    "hip_thrust_machine_explosive": {
+      "last_date": "2026-04-09",
+      "session": "explosive_thursday",
+      "sets": 4, "reps": 10,
+      "weight_per_side_lbs": 180.0,
+      "status": "completed",
+      "next_target_per_side_lbs": 180.0,
+      "notes": "Top set 180/side x10 (machine). Hold at 180/side until 3x10 is clean before adding weight."
+    },
+
+    "back_extension_45": {
+      "last_date": "2026-04-06",
+      "session": "heavy_monday",
+      "sets": 3, "reps": 15,
+      "weight_lbs": 45,
+      "status": "completed",
+      "next_target_lbs": 45,
+      "notes": "Rehab movement only. Hold at 45 lbs. Skipped Apr 13; not logged Apr 20."
+    },
+
+    "box_jump": {
+      "last_date": "2026-04-09",
+      "session": "explosive_thursday",
+      "sets": 3, "reps": 10,
+      "height_inches": 30,
+      "status": "partial",
+      "next_target_sets": 4,
+      "next_target_reps": 5,
+      "notes": "Jumped down 3rd set for speed. Next: add 4th set, reduce to 4-5 reps per set (max height focus)."
+    },
+
+    "db_bench_negative_incline": {
+      "last_date": "2026-04-19",
+      "session": "upper_body",
+      "gym": "building",
+      "sets": 3, "reps": 15,
+      "weight_per_hand_lbs": 50,
+      "status": "completed",
+      "next_target_per_hand_lbs": 50,
+      "notes": "Hold. Progress to 55/hand when 3x15 feels easy."
+    },
+
+    "db_bench_flat": {
+      "last_date": "2026-04-19",
+      "session": "upper_body",
+      "gym": "building",
+      "sets": 3, "reps": 15,
+      "weight_per_hand_lbs": 50,
+      "status": "completed",
+      "next_target_per_hand_lbs": 50,
+      "notes": "Hold. Progress to 55/hand when 3x15 feels easy."
+    },
+
+    "db_bench_positive_incline": {
+      "last_date": "2026-04-19",
+      "session": "upper_body",
+      "gym": "building",
+      "sets": 1, "reps": 12,
+      "weight_per_hand_lbs": 50,
+      "status": "partial",
+      "next_target_sets": 3,
+      "next_target_per_hand_lbs": 50,
+      "notes": "Cut to 1 set Apr 19 (time). Last full session Apr 10: 3x10 @ 50/hand. Return to 3x10 next upper session."
+    },
+
+    "pullup": {
+      "last_date": "2026-04-19",
+      "session": "upper_body",
+      "gym": "building",
+      "sets": 3, "reps": "to_failure",
+      "weight_additional_lbs": 0,
+      "status": "completed",
+      "notes": "REPS NOT LOGGED — must track for progression. Estimate and log every session."
+    },
+
+    "pushup": {
+      "last_date": "2026-04-19",
+      "session": "upper_body",
+      "gym": "building",
+      "sets": 3, "reps": "to_failure",
+      "status": "completed",
+      "notes": "REPS NOT LOGGED — must track for progression."
+    }
+
+  },
+
+  "sessions": [
+
+    {
+      "date": "2026-04-06",
+      "session_type": "heavy_monday",
+      "gym": "main",
+      "context": "First heavy session post lower back injury (Apr 2). Deadlifts and hip thrusts skipped.",
+      "exercises": [
+        {"name": "barbell_squat", "sets": 4, "reps": 5, "weight_total_lbs": 175, "weight_per_side_lbs": 65.0, "status": "completed"},
+        {"name": "incline_leg_press", "sets": 4, "reps": 5, "weight_total_lbs": 425, "weight_per_side_lbs": 190.0, "status": "completed"},
+        {"name": "back_extension_45", "sets": 3, "reps": 15, "weight_lbs": 45, "status": "completed", "notes": "Light rehab"},
+        {"name": "bulgarian_split_squat", "sets": 3, "reps": 10, "weight_per_hand_lbs": 30.0, "status": "completed"},
+        {"name": "barbell_deadlift", "status": "skipped", "notes": "Lower back injury"},
+        {"name": "barbell_hip_thrust", "status": "skipped", "notes": "Lower back injury"}
+      ]
+    },
+
+    {
+      "date": "2026-04-09",
+      "session_type": "explosive_thursday",
+      "gym": "main",
+      "context": "First explosive session after back injury resolved.",
+      "exercises": [
+        {"name": "explosive_squat", "sets": 3, "reps": 5, "weight_total_lbs": 150, "weight_per_side_lbs": 52.5, "status": "completed", "notes": "Felt explosive. +5 lbs next week."},
+        {"name": "box_jump", "sets": 3, "reps": 10, "height_inches": 30, "status": "partial", "notes": "Jumped down 3rd set for speed. Plan was 4x4-5."},
+        {"name": "bulgarian_split_squat_explosive", "sets": 3, "reps": 10, "weight_per_hand_lbs": 35.0, "status": "completed", "notes": "Exceeded plan of 30/hand."},
+        {"name": "hip_thrust_machine_explosive", "status": "completed",
+          "sets_detail": [
+            {"sets": 1, "reps": 10, "weight_per_side_lbs": 90},
+            {"sets": 1, "reps": 10, "weight_per_side_lbs": 135},
+            {"sets": 2, "reps": 10, "weight_per_side_lbs": 180}
+          ],
+          "notes": "Progressive warm-up to 180/side. Top set x10."}
+      ]
+    },
+
+    {
+      "date": "2026-04-10",
+      "session_type": "upper_body_friday",
+      "gym": "main",
+      "context": "Light maintenance chest work.",
+      "exercises": [
+        {"name": "db_bench_flat", "sets": 3, "reps": 15, "weight_per_hand_lbs": 50, "status": "completed", "notes": "Chest-to-top press"},
+        {"name": "db_bench_negative_incline", "sets": 3, "reps": 15, "weight_per_hand_lbs": 50, "status": "completed"},
+        {"name": "db_bench_positive_incline", "sets": 3, "reps": 10, "weight_per_hand_lbs": 50, "status": "completed", "notes": "45 degree incline"}
+      ]
+    },
+
+    {
+      "date": "2026-04-13",
+      "session_type": "heavy_monday",
+      "gym": "main",
+      "context": "Post-458 TSS Sunday ride. High fatigue throughout.",
+      "exercises": [
+        {"name": "barbell_squat", "sets": 4, "reps": 5, "weight_total_lbs": 180, "weight_per_side_lbs": 67.5, "status": "completed", "notes": "Limited depth due to fatigue."},
+        {"name": "barbell_deadlift", "status": "skipped", "notes": "Deferred due to Sunday fatigue."},
+        {"name": "incline_leg_press", "sets": 4, "reps": 5, "weight_total_lbs": 435, "weight_per_side_lbs": 195.0, "status": "completed", "notes": "Intra-set pauses every set — near limit. Note: hold next week."},
+        {"name": "bulgarian_split_squat", "status": "skipped", "notes": "Deferred."},
+        {"name": "barbell_hip_thrust", "sets": 3, "reps": 10, "weight_per_side_lbs": 125.0, "status": "completed"},
+        {"name": "back_extension_45", "status": "skipped", "notes": "Fatigue."},
+        {"name": "core", "status": "skipped", "notes": "Fatigue."}
+      ]
+    },
+
+    {
+      "date": "2026-04-14",
+      "session_type": "upper_body_outdoor",
+      "gym": "gansevoort_park",
+      "context": "Outdoor session at Gansevoort Peninsula River Gym. Bodyweight + park equipment. ~90 min.",
+      "exercises": [
+        {"name": "pullup", "sets": 3, "reps": "to_failure", "status": "completed"},
+        {"name": "pushup", "sets": 3, "reps": "to_failure", "status": "completed"},
+        {"name": "inverted_row", "sets": "unknown", "status": "completed"},
+        {"name": "dip", "sets": "unknown", "status": "completed"},
+        {"name": "core", "status": "partial", "notes": "Pallof press and side plank skipped."}
+      ]
+    },
+
+    {
+      "date": "2026-04-19",
+      "session_type": "upper_body",
+      "gym": "building",
+      "context": "Day after GSSR race (Stage 1 TT + Stage 2 Road Race). Recovery session — legs spared entirely.",
+      "exercises": [
+        {"name": "pullup", "sets": 3, "reps": "to_failure", "status": "completed", "notes": "Reps not logged."},
+        {"name": "pushup", "sets": 3, "reps": "to_failure", "status": "completed", "notes": "Reps not logged."},
+        {"name": "db_bench_negative_incline", "sets": 3, "reps": 15, "weight_per_hand_lbs": 50, "status": "completed"},
+        {"name": "db_bench_flat", "sets": 3, "reps": 15, "weight_per_hand_lbs": 50, "status": "completed", "notes": "Neutral grip"},
+        {"name": "db_bench_positive_incline", "sets": 1, "reps": 12, "weight_per_hand_lbs": 50, "status": "partial", "notes": "Cut short — ran out of time."}
+      ]
+    },
+
+    {
+      "date": "2026-04-27",
+      "session_type": "heavy_monday",
+      "gym": "main",
+      "context": "Post ~515 TSS Diamant Mountain Stage Race weekend (circuit Sat + road race Sun). Maintenance session — hold the line, no progression expected.",
+      "exercises": [
+        {"name": "barbell_squat", "sets": 4, "reps": 5, "weight_total_lbs": 185, "weight_per_side_lbs": 70.0, "status": "completed", "notes": "Held as planned. Good depth."},
+        {"name": "barbell_deadlift", "status": "reintroduction", "sets_detail": [
+            {"sets": 1, "reps": 10, "weight_per_side_lbs": 45.0},
+            {"sets": 1, "reps": 10, "weight_per_side_lbs": 70.0}
+          ], "notes": "Warmup ramps only — no working sets. Movement reintroduction after two back flares (Apr 2 + Apr 20). No pain reported."},
+        {"name": "incline_leg_press", "sets": 3, "reps": 5, "weight_total_lbs": 405, "weight_per_side_lbs": 180.0, "status": "partial", "notes": "Felt very hard. Race fatigue. Only 3 sets (planned 4)."},
+        {"name": "bulgarian_split_squat", "status": "skipped", "notes": "Post-race fatigue. 3rd consecutive session dropped."},
+        {"name": "barbell_hip_thrust", "sets": 3, "reps": 10, "weight_per_side_lbs": 135.0, "status": "completed", "notes": "Held at 135/side (planned 140 — post-race adjustment). Ready for 140 next session."},
+        {"name": "back_extension_45", "status": "not_logged"}
+      ]
+    },
+
+    {
+      "date": "2026-04-20",
+      "session_type": "heavy_monday",
+      "gym": "main",
+      "context": "Makeup session (Thu Apr 17 skipped, Apr 13 partial). Post-GSSR race weekend.",
+      "exercises": [
+        {"name": "barbell_squat", "sets": 4, "reps": 5, "weight_total_lbs": 185, "weight_per_side_lbs": 70.0, "status": "completed", "notes": "Depth improved vs Apr 13."},
+        {"name": "barbell_deadlift", "status": "skipped", "notes": "Back pain flared — 2nd flare in 18 days."},
+        {"name": "incline_leg_press", "status": "partial",
+          "sets_detail": [
+            {"sets": 2, "reps": 5, "weight_total_lbs": 445, "weight_per_side_lbs": 200.0},
+            {"sets": 2, "reps": 5, "weight_total_lbs": 405, "weight_per_side_lbs": 180.0}
+          ],
+          "notes": "Started too heavy (200 vs planned 195/side), had to drop to 180. Reset to 195/side next session."},
+        {"name": "bulgarian_split_squat", "status": "completed",
+          "sets_detail": [
+            {"sets": 1, "reps": 10, "weight_per_hand_lbs": 30.0},
+            {"sets": 1, "reps": 10, "weight_per_hand_lbs": 35.0},
+            {"sets": 1, "reps": 10, "weight_per_hand_lbs": 45.0}
+          ],
+          "notes": "Progressive — 30/hand (equipment), ended 45/hand. Establish 40/hand as working weight."},
+        {"name": "barbell_hip_thrust", "sets": 3, "reps": 10, "weight_per_side_lbs": 135.0, "status": "completed"},
+        {"name": "back_extension_45", "status": "not_logged"},
+        {"name": "core", "status": "not_logged"}
+      ]
+    }
+
+  ]
+}
